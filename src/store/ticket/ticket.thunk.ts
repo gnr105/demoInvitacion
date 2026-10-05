@@ -11,7 +11,34 @@ export const startGettingTicket = (keyPass: string) => {
         try {
             dispatch(setIsLoading(true))
 
-            const { data: ticket } = await instance.get<Ticket>(`tickets/keyPass/${keyPass}`)
+            const demoKey = import.meta.env.VITE_DEMO_ACCESS_KEY
+            let ticket: Ticket
+
+            if (demoKey) {
+                if (keyPass.trim().toUpperCase() !== demoKey.trim().toUpperCase()) {
+                    toast.error('Clave incorrecta. Verifica tu clave de acceso.')
+                    return false
+                }
+
+                ticket = {
+                    id: 'demo-grethel',
+                    name: 'Invitado de demostración',
+                    adultsQuantity: 1,
+                    adultsCounter: 0,
+                    kidsQuantity: 0,
+                    kidsCounter: 0,
+                    qrCode: '',
+                    phone: '',
+                    keyPass: demoKey.trim().toUpperCase(),
+                    isActive: true,
+                    event: 'demo-grethel',
+                    user: '',
+                    table: '',
+                }
+            } else {
+                const response = await instance.get<Ticket>(`tickets/keyPass/${keyPass}`)
+                ticket = response.data
+            }
 
             dispatch(setTicket(ticket))
             localStorage.setItem('abrasa-ticket', JSON.stringify(ticket))
@@ -30,4 +57,4 @@ export const startGettingTicket = (keyPass: string) => {
             dispatch(setIsLoading(false))
         }
     }
-}
+}

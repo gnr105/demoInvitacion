@@ -30,6 +30,7 @@ jobs:
       - run: npm run build
         env:
           VITE_BASE_PATH: /demoInvitacion/
+          VITE_DEMO_ACCESS_KEY: GRETHEL
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
