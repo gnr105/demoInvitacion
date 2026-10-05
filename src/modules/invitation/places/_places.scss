@@ -1,0 +1,332 @@
+@use '../../../common/styles/variables' as vars;
+@use '../../../common/styles/mixins' as mix;
+
+.places-section {
+    padding: 6rem 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    @include mix.respondToMin('md') {
+        padding: 12rem 0;
+    }
+
+    @include mix.respondToMin('lg') {
+        padding: 15rem 0;
+    }
+
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: .3;
+        background-size: cover;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    &__container {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 96rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+
+        @include mix.respondToMin('lg') {
+            max-width: 108rem;
+        }
+
+        @include mix.respondToMin('xl') {
+            max-width: 116rem;
+        }
+    }
+
+    &__logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 10rem;
+
+            @include mix.respondToMin('sm') {
+                width: 13rem;
+            }
+
+            @include mix.respondToMin('md') {
+                width: 18rem;
+            }
+        }
+    }
+
+    &__date {
+        font-family: vars.$font-serif;
+        font-size: 1.3rem;
+        font-weight: 500;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: vars.$color-primary-700;
+        text-align: center;
+        margin: -0.5rem 0 1rem;
+
+        @include mix.respondToMin('md') {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__draw {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-top: 1rem;
+
+        @include mix.respondToMin('lg') {
+            display: none;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0.9;
+
+            @include mix.respondToMin('xs') {
+                width: 90%;
+            }
+
+            @include mix.respondToMin('md') {
+                width: 80%;
+            }
+        }
+    }
+
+    &__image {
+        position: relative;
+        width: 100%;
+        height: 45rem;
+        display: block;
+        overflow: hidden;
+
+        @include mix.respondToMin('sm') {
+            height: 55rem;
+        }
+
+        @include mix.respondToMin('md') {
+            height: 70rem;
+        }
+
+        @include mix.respondToMin('lg') {
+            height: 75rem;
+        }
+
+        @include mix.respondToMin('xl') {
+            height: 80rem;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 22%;
+            display: block;
+
+            @include mix.respondToMin('lg') {
+                object-position: 57% 20%;
+            }
+
+            @include mix.respondToMin('xl') {
+                object-position: 60% 42%;
+            }
+        }
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(vars.$color-primary, .1);
+        z-index: 2;
+    }
+}
+
+.places-section__grid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include mix.respondToMin('lg') {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: stretch;
+    }
+}
+
+.places-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 44rem;
+    margin: 0 auto 3.2rem;
+    gap: 1rem;
+    padding: 4rem 2rem;
+    box-shadow: 0 10px 30px rgba(vars.$color-primary, 0.15);
+    border: 1px solid vars.$color-primary-100;
+    background-color: #ffffff;
+
+    @include mix.respondToMin('xs') {
+        width: 90%;
+    }
+
+    @include mix.respondToMin('md') {
+        max-width: 58rem;
+        padding: 5.5rem 3.5rem;
+        gap: 1.4rem;
+        margin-bottom: 4.5rem;
+    }
+
+    @include mix.respondToMin('lg') {
+        max-width: 100%;
+        margin-bottom: 0;
+        height: 100%;
+        justify-content: space-between;
+    }
+
+    &__icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0.5rem;
+
+        img {
+            width: 5.5rem;
+            height: 5.5rem;
+            object-fit: contain;
+            display: block;
+
+            @include mix.respondToMin('md') {
+                width: 7.5rem;
+                height: 7.5rem;
+            }
+        }
+    }
+
+    &__flor {
+        position: absolute;
+        z-index: 1;
+
+        img {
+            width: 7rem;
+            height: auto;
+            display: block;
+
+            @include mix.respondToMin('md') {
+                width: 9.5rem;
+            }
+        }
+
+        &--first {
+            top: 0;
+            transform: rotate(180deg);
+            right: -.5rem;
+        }
+
+        &--second {
+            top: 0;
+            left: -.5rem;
+        }
+    }
+
+    &__title {
+        font-family: vars.$font-serif;
+        font-size: 1.8rem;
+        color: vars.$color-primary-900;
+        margin: 0;
+        letter-spacing: 0.02em;
+
+        @include mix.respondToMin('md') {
+            font-size: 2.3rem;
+            letter-spacing: 0.05em;
+        }
+    }
+
+    &__venue {
+        font-family: vars.$font-p1-cursive;
+        font-size: 2.8rem;
+        color: vars.$color-secondary-600;
+        line-height: 1.2;
+        margin: 0;
+        font-weight: 400;
+
+        @include mix.respondToMin('md') {
+            font-size: 3.8rem;
+        }
+    }
+
+    &__time {
+        font-family: vars.$font-serif;
+        font-size: 2.4rem;
+        font-weight: 400;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: vars.$color-primary;
+        margin: 0;
+
+        @include mix.respondToMin('md') {
+            font-size: 3.2rem;
+            letter-spacing: 2px;
+        }
+    }
+
+    &__address {
+        font-family: vars.$font-serif;
+        font-size: 1.25rem;
+        font-weight: 300;
+        line-height: 1.7;
+        color: vars.$color-text-700;
+        letter-spacing: 0.5px;
+        margin: 0;
+        width: 90%;
+
+        @include mix.respondToMin('md') {
+            font-size: 1.6rem;
+            line-height: 1.85;
+            width: 85%;
+        }
+    }
+
+    &__button {
+        margin-top: 1rem;
+
+        @include mix.respondToMin('md') {
+            margin-top: 1.8rem;
+            width: 36rem !important;
+            padding: 1.6rem 3.4rem !important;
+            font-size: 1.7rem !important;
+
+            .btn__icon svg,
+            svg {
+                width: 2.6rem !important;
+                height: 2.6rem !important;
+            }
+        }
+    }
+}

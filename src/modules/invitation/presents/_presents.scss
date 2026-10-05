@@ -1,0 +1,376 @@
+@use '../../../common/styles/variables' as vars;
+@use '../../../common/styles/mixins' as mix;
+
+.presents-section {
+    padding: 8rem 0 0;
+    position: relative;
+    overflow: hidden;
+
+    @include mix.respondToMin('md') {
+        padding: 12rem 0 0;
+    }
+
+    @include mix.respondToMin('lg') {
+        padding: 15rem 0;
+    }
+
+    &__container {
+        width: 90%;
+        margin: 0 auto;
+
+        @include mix.respondToMin('xs') {
+            width: 80%;
+        }
+
+        @include mix.respondToMin('md') {
+            max-width: 68rem;
+            width: 90%;
+        }
+
+        @include mix.respondToMin('lg') {
+            max-width: 125rem;
+            width: 95%;
+        }
+
+        @include mix.respondToMin('xl') {
+            max-width: 135rem;
+        }
+    }
+
+    &__accordion-wrapper {
+        margin-top: 3.5rem;
+
+        .accordion__item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+        }
+
+        .accordion__icon {
+            color: vars.$color-secondary-600;
+        }
+
+        @include mix.respondToMin('md') {
+            margin-top: 4.5rem;
+
+            .accordion {
+                width: 100%;
+            }
+
+            .accordion--separated {
+                gap: 3.2rem;
+            }
+
+            .accordion__header {
+                padding: 2.4rem 3.2rem;
+                font-size: 1.8rem;
+            }
+
+            .accordion__title-container {
+                font-size: 1.8rem;
+                gap: 1.6rem;
+            }
+
+            .accordion__icon svg {
+                width: 3.6rem;
+                height: 3.6rem;
+            }
+
+            .accordion__chevron svg {
+                width: 2.8rem;
+                height: 2.8rem;
+            }
+
+            .accordion__body {
+                padding: 0 3.2rem 3.5rem;
+            }
+        }
+
+        @include mix.respondToMin('lg') {
+
+            .accordion,
+            .accordion--separated {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 3.5rem;
+                align-items: stretch;
+            }
+
+            .accordion__item {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+
+            .accordion__header {
+                pointer-events: none;
+                padding: 2.5rem 2rem;
+                justify-content: center;
+            }
+
+            .accordion__title-container {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .accordion__chevron {
+                display: none;
+            }
+
+            .accordion__content-wrapper {
+                display: block !important;
+                height: auto !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                flex: 1;
+            }
+
+            .accordion__body {
+                padding: 0 2rem 3rem;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        @include mix.respondToMin('xl') {
+
+            .accordion,
+            .accordion--separated {
+                gap: 4rem;
+            }
+
+            .accordion__header {
+                padding: 3rem 2.4rem;
+            }
+
+            .accordion__body {
+                padding: 0 2.4rem 3.5rem;
+            }
+        }
+    }
+
+
+    &__accordion-content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem 0 0.5rem;
+
+        @include mix.respondToMin('lg') {
+            position: static;
+            height: 100%;
+            justify-content: space-between;
+        }
+
+        &--envelope {
+            padding: 1.5rem 0 2rem;
+        }
+
+        .btn {
+            position: relative;
+            z-index: 2;
+        }
+    }
+
+
+    &__card-button {
+        margin-top: 2rem;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+
+        button {
+            width: 100% !important;
+        }
+
+        @include mix.respondToMin('md') {
+            margin-top: 2.4rem;
+
+            button,
+            .btn {
+                width: 34rem !important;
+                padding: 1.6rem 3.2rem !important;
+                font-size: 1.65rem !important;
+
+                .btn__icon svg,
+                svg {
+                    width: 2.4rem !important;
+                    height: 2.4rem !important;
+                }
+            }
+        }
+
+        @include mix.respondToMin('lg') {
+            width: 100%;
+
+            button,
+            .btn {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 1.4rem 2rem !important;
+                font-size: 1.5rem !important;
+            }
+        }
+    }
+
+    &__card-flor {
+        position: absolute;
+        width: 8rem;
+        height: auto;
+        pointer-events: none;
+        opacity: 0.75;
+        z-index: 0;
+
+        @include mix.respondToMin('sm') {
+            width: 10rem;
+        }
+
+        @include mix.respondToMin('md') {
+            width: 14rem;
+        }
+
+        &--bottom-right {
+            bottom: -5rem;
+            right: -3.5rem;
+
+            @include mix.respondToMin('lg') {
+                bottom: -2rem;
+                right: -2rem;
+                width: 16rem;
+            }
+        }
+
+        &--bottom-left {
+            bottom: -4rem;
+            left: -4rem;
+            transform: scaleX(-1);
+
+            @include mix.respondToMin('lg') {
+                bottom: -2rem;
+                left: -2rem;
+                width: 16rem;
+            }
+        }
+    }
+
+    &__card-text {
+        font-family: vars.$font-serif;
+        font-size: 1.2rem;
+        color: #4a4a4a;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 2;
+
+        @include mix.respondToMin('sm') {
+            width: 90%;
+            font-size: 1.4rem;
+        }
+
+        @include mix.respondToMin('md') {
+            width: 88%;
+            font-size: 1.75rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        @include mix.respondToMin('lg') {
+            width: 100%;
+            font-size: 1.55rem;
+        }
+    }
+
+    &__bank-info {
+        width: 100%;
+        background-color: vars.$color-2-100;
+        padding: 1.2rem 1.4rem;
+        margin-bottom: 1.5rem;
+        text-align: left;
+        border: 1px dashed rgba(vars.$color-primary-700, 0.2);
+        position: relative;
+        z-index: 2;
+
+        @include mix.respondToMin('md') {
+            padding: 2rem 2.4rem;
+            margin-bottom: 2.2rem;
+        }
+    }
+
+
+    &__bank-line {
+        font-family: vars.$font-serif;
+        font-size: 0.95rem;
+        color: #4a4a4a;
+        margin-bottom: 0.4rem;
+        line-height: 1.4;
+
+        @include mix.respondToMin('sm') {
+            font-size: 1.4rem;
+        }
+
+        @include mix.respondToMin('md') {
+            font-size: 1.7rem;
+            line-height: 1.5;
+            margin-bottom: 0.8rem;
+        }
+
+        @include mix.respondToMin('lg') {
+            font-size: 1.45rem;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        span {
+            color: vars.$color-primary-700;
+            margin-right: 0.3rem;
+        }
+
+        strong {
+            color: vars.$color-primary-900;
+        }
+
+        &--clabe {
+            word-break: break-all;
+        }
+    }
+
+    &__img {
+        width: 100%;
+        height: auto;
+        display: block;
+
+        @include mix.respondToMin('lg') {
+            max-width: 125rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @include mix.respondToMin('xl') {
+            max-width: 135rem;
+        }
+
+        &--bottom {
+            margin-top: 3rem;
+
+            @include mix.respondToMin('xs') {
+                margin-top: 4rem;
+                margin-bottom: 0;
+            }
+
+            @include mix.respondToMin('md') {
+                margin-top: 6rem;
+                margin-bottom: 0;
+            }
+
+            @include mix.respondToMin('lg') {
+                display: none;
+            }
+        }
+    }
+}

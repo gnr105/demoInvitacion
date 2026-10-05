@@ -1,0 +1,116 @@
+@use './variables' as vars;
+@use './mixins' as mix;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root,
+html {
+    color-scheme: light !important;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+    background-color: #ffffff;
+    color: vars.$color-text;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    background-color: #ffffff;
+    color: vars.$color-text;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+    cursor: pointer;
+    -webkit-appearance: button;
+    appearance: button;
+}
+
+button:disabled,
+input:disabled,
+textarea:disabled,
+select:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+textarea {
+    resize: vertical;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Invitation Layout Modifiers */
+.invitation {
+    margin: 0 auto;
+
+    @include mix.respondToMin('lg') {
+        width: 90%;
+        border-left: 1px solid rgba(vars.$color-primary-700, 0.2);
+        border-right: 1px solid rgba(vars.$color-primary-700, 0.2);
+    }
+
+    &--has-menu-bar {
+        margin-top: vars.$menu-bar-height;
+    }
+}
+
+/* Utilities */
+.my-2 {
+    margin: 2rem 0;
+}

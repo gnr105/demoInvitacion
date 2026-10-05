@@ -1,0 +1,245 @@
+@use '../../../common/styles/variables' as vars;
+@use '../../../common/styles/mixins' as mix;
+
+.details-section {
+    position: relative;
+    overflow: hidden;
+
+    @include mix.respondToMin('md') {
+        padding: 6rem 0;
+    }
+
+    @include mix.respondToMin('lg') {
+        padding: 0;
+    }
+
+    &__img {
+        width: 100%;
+        height: auto;
+        display: block;
+
+        &--top {
+            @include mix.respondToMin('xs') {
+                margin-top: -1rem;
+            }
+
+            @include mix.respondToMin('sm') {
+                margin-top: -4rem;
+            }
+
+            @include mix.respondToMin('lg') {
+                margin-top: -14rem;
+                max-width: 125rem;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            @include mix.respondToMin('xl') {
+                margin-top: -18rem;
+                max-width: 135rem;
+            }
+        }
+    }
+
+
+    &__container {
+        max-width: 110rem;
+        width: 90%;
+        margin: 0 auto;
+        padding: 3rem 0 4rem;
+
+        @include mix.respondToMin('md') {
+            max-width: 90rem;
+            width: 92%;
+        }
+
+        @include mix.respondToMin('lg') {
+            max-width: 125rem;
+            width: 95%;
+            padding: 1rem 0 3rem;
+            margin-top: -10rem;
+        }
+
+        @include mix.respondToMin('xl') {
+            max-width: 135rem;
+        }
+    }
+
+    &__swiper-wrapper {
+        margin-top: 3.5rem;
+        position: relative;
+        width: 100%;
+        padding-bottom: 4.5rem;
+
+        .carousel {
+            padding-bottom: 0 !important;
+
+            .swiper {
+                overflow: visible !important;
+            }
+
+            .swiper-pagination {
+                bottom: -2.5rem !important;
+            }
+        }
+
+        @include mix.respondToMin('md') {
+            margin-top: 4.5rem;
+            padding-bottom: 5.5rem;
+
+            .carousel {
+                .swiper-pagination {
+                    bottom: -3rem !important;
+                }
+            }
+        }
+
+        @include mix.respondToMin('lg') {
+            margin-top: 3rem;
+            padding-bottom: 5rem;
+        }
+    }
+
+
+
+    &__card {
+        position: relative;
+        background: #ffffff;
+        border: 1px solid rgba(vars.$color-primary-800, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+        padding: 3rem 1.8rem 3.2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: left;
+        align-items: flex-start;
+        height: 100%;
+        min-height: 28rem;
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+        border-radius: 0;
+
+        @include mix.respondToMin('xs') {
+            width: 95%;
+        }
+
+        @include mix.respondToMin('sm') {
+            width: 100%;
+        }
+
+        @include mix.respondToMin('md') {
+            padding: 5rem 3.6rem 5.5rem;
+            min-height: 44rem;
+        }
+
+        @include mix.respondToMin('lg') {
+            padding: 4.5rem 3.2rem 5rem;
+        }
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+        }
+    }
+
+    &__card-flower {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 3.5rem;
+        height: auto;
+        opacity: 0.85;
+        pointer-events: none;
+
+        @include mix.respondToMin('md') {
+            top: 2.2rem;
+            right: 2.2rem;
+            width: 5rem;
+        }
+    }
+
+
+
+    &__card-header {
+        margin-bottom: 2rem;
+        width: 100%;
+    }
+
+    &__card-category {
+        display: block;
+        font-family: vars.$font-serif;
+        font-size: 1.4rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: vars.$color-primary-700;
+        margin-bottom: 0.4rem;
+        opacity: 0.9;
+
+        @include mix.respondToMin('md') {
+            font-size: 1.6rem;
+            letter-spacing: 0.25em;
+            margin-bottom: 0.8rem;
+        }
+    }
+
+    &__card-title {
+        font-family: vars.$font-serif;
+        font-size: 2.3rem;
+        color: vars.$color-primary-300;
+        line-height: 1.2;
+        margin: 0;
+
+        @include mix.respondToMin('sm') {
+            font-size: 2.6rem;
+        }
+
+        @include mix.respondToMin('md') {
+            font-size: 3.2rem;
+            line-height: 1.25;
+        }
+
+        @include mix.respondToMin('lg') {
+            font-size: 2.8rem;
+            line-height: 1.2;
+        }
+    }
+
+    &__card-body {
+        width: 100%;
+        margin-top: auto;
+    }
+
+    &__card-description {
+        font-family: vars.$font-serif;
+        font-size: 1rem;
+        line-height: 1.75;
+        color: #4a4a4a;
+        margin: 0;
+
+        @include mix.respondToMin('sm') {
+            font-size: 1.05rem;
+        }
+
+        @include mix.respondToMin('md') {
+            font-size: 1.5rem;
+            line-height: 1.7;
+        }
+    }
+
+    &__card-highlight {
+        display: inline-block;
+        margin-top: 1.2rem;
+        font-family: vars.$font-serif;
+        font-size: 1.15rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: vars.$color-primary-800;
+        border-bottom: 1px solid vars.$color-primary-300;
+        padding-bottom: 0.2rem;
+
+        @include mix.respondToMin('md') {
+            font-size: 1.6rem;
+            margin-top: 1.6rem;
+            padding-bottom: 0.3rem;
+        }
+    }
+}

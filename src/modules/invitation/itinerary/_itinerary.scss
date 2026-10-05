@@ -1,0 +1,312 @@
+@use '../../../common/styles/variables' as vars;
+@use '../../../common/styles/mixins' as mix;
+
+.itinerary {
+    position: relative;
+    overflow: hidden;
+
+    @include mix.respondToMin('lg') {
+        padding: 15rem 0;
+    }
+
+    &__img {
+        width: 100%;
+        height: auto;
+        display: block;
+
+        @include mix.respondToMin('lg') {
+            display: none;
+        }
+
+        &--top {
+            margin-top: -2rem;
+
+            @include mix.respondToMin('xs') {
+                margin-top: -4rem;
+                transform: rotate(-5deg);
+            }
+
+            @include mix.respondToMin('sm') {
+                margin-top: -7rem;
+            }
+        }
+
+        &--bottom {
+            margin-top: 3rem;
+
+            @include mix.respondToMin('xs') {
+                margin-top: 4rem;
+                margin-bottom: -2rem;
+            }
+        }
+    }
+
+    &__flower-desktop {
+        display: none;
+
+        @include mix.respondToMin('lg') {
+            display: block;
+            position: absolute;
+            z-index: 1;
+            width: 28rem;
+            opacity: 0.9;
+            pointer-events: none;
+        }
+
+        @include mix.respondToMin('xl') {
+            width: 34rem;
+        }
+
+        &--top-right {
+            @include mix.respondToMin('lg') {
+                top: 0;
+                right: 0;
+            }
+        }
+
+        &--bottom-left {
+            @include mix.respondToMin('lg') {
+                bottom: 0;
+                left: 0;
+            }
+        }
+    }
+
+
+    &__container {
+        position: relative;
+        z-index: 2;
+        width: 95%;
+        margin: 0 auto;
+        padding: 0 3rem;
+
+        @include mix.respondToMin('md') {
+            max-width: 68rem;
+            padding: 0 4rem;
+        }
+    }
+
+    &__header {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    &__subtitle-text {
+        font-family: vars.$font-serif;
+    }
+
+    &__grid {
+        width: 100%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3.5rem 0;
+        position: relative;
+        margin-top: 4rem;
+
+        @include mix.respondToMin('md') {
+            gap: 5.5rem 0;
+            margin-top: 5.5rem;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            background-color: rgba(vars.$color-secondary-600, 0.25);
+            z-index: 1;
+        }
+    }
+
+    &__active-node {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 4.4rem;
+        height: 4.4rem;
+        border-radius: 50%;
+        background-color: vars.$color-secondary-400;
+        color: vars.$color-3-200;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 20px rgba(vars.$color-secondary-900, 0.28);
+        z-index: 10;
+        transition: top 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+        @include mix.respondToMin('sm') {
+            width: 5.2rem;
+            height: 5.2rem;
+        }
+
+        @include mix.respondToMin('md') {
+            width: 6.6rem;
+            height: 6.6rem;
+
+            svg {
+                width: 3.2rem;
+                height: 3.2rem;
+            }
+        }
+    }
+
+    &__node-outline {
+        position: absolute;
+        top: 50%;
+        width: 3.8rem;
+        height: 3.8rem;
+        border-radius: 50%;
+        background-color: #ffffff;
+        border: 1px solid rgba(vars.$color-secondary-600, 0.4);
+        color: rgba(vars.$color-secondary-600, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+        transition: opacity 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+
+        @include mix.respondToMin('sm') {
+            width: 5.2rem;
+            height: 5.2rem;
+        }
+
+        @include mix.respondToMin('md') {
+            width: 6.6rem;
+            height: 6.6rem;
+
+            svg {
+                width: 2.8rem;
+                height: 2.8rem;
+            }
+        }
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 3;
+        min-height: 5rem;
+        margin-top: -2rem;
+        opacity: 0.55;
+        transition: opacity 0.35s ease, transform 0.35s ease;
+
+        &--active {
+            opacity: 1;
+            transform: scale(1.03);
+
+            .itinerary__node-outline {
+                opacity: 0;
+            }
+        }
+
+        &--left {
+            grid-column: 1 / 2;
+            text-align: center;
+            align-items: center;
+            padding-right: 3.8rem;
+
+            @include mix.respondToMin('md') {
+                padding-right: 5.5rem;
+            }
+
+            .itinerary__node-outline {
+                right: 0;
+                transform: translate(50%, -50%);
+            }
+        }
+
+        &--right {
+            grid-column: 2 / 3;
+            text-align: center;
+            align-items: center;
+            padding-left: 3.8rem;
+
+            @include mix.respondToMin('md') {
+                padding-left: 5.5rem;
+            }
+
+            .itinerary__node-outline {
+                left: 0;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+
+    &__item-icon {
+        width: 5rem;
+        height: 5rem;
+        object-fit: contain;
+        margin-bottom: 0.3rem;
+
+        @include mix.respondToMin('xs') {
+            width: 5.5rem;
+            height: 5.5rem;
+        }
+
+        @include mix.respondToMin('sm') {
+            width: 6rem;
+            height: 6rem;
+        }
+
+        @include mix.respondToMin('md') {
+            width: 6.5rem;
+            height: 6.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        @include mix.respondToMin('lg') {
+            width: 6.2rem;
+            height: 6.2rem;
+        }
+    }
+
+    &__time {
+        font-family: vars.$font-serif;
+        font-size: 1.2rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        color: vars.$color-secondary-600;
+        text-transform: uppercase;
+        margin-bottom: 0.3rem;
+        line-height: 1.2;
+
+        @include mix.respondToMin('sm') {
+            font-size: 1.6rem;
+        }
+
+        @include mix.respondToMin('md') {
+            font-size: 2.2rem;
+            letter-spacing: 0.22em;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+
+
+    &__event {
+        font-family: vars.$font-serif;
+        font-size: 1rem;
+        font-weight: 300;
+        color: #333333;
+        line-height: 1.4;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+
+        @include mix.respondToMin('sm') {
+            font-size: 1.2rem;
+        }
+
+        @include mix.respondToMin('md') {
+            font-size: 1.65rem;
+            letter-spacing: 0.12em;
+            line-height: 1.5;
+        }
+    }
+}
